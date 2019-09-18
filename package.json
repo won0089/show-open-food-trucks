@@ -1,0 +1,28 @@
+{
+    "name": "show-open-food-trucks",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "build": "rimraf bin && tsc && sh build/build.sh",
+        "start": "tsc && node bin/index.js"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "@types/cli-table": "^0.3.0",
+        "@types/inquirer": "^6.5.0",
+        "@types/node": "^12.7.5",
+        "@types/request": "^2.48.3",
+        "@types/request-promise": "^4.1.44",
+        "cli-table": "^0.3.1",
+        "commander": "^3.0.1",
+        "inquirer": "^7.0.0",
+        "pkg": "^4.4.0",
+        "request": "^2.88.0",
+        "request-promise": "^4.2.4",
+        "rimraf": "^3.0.0",
+        "typescript": "^3.6.3",
+        "word-wrap": "^1.2.3"
+    }
+}
