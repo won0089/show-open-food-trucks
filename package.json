@@ -1,7 +1,7 @@
 {
     "name": "show-open-food-trucks",
     "version": "1.0.0",
-    "description": "",
+    "description": "CLI tool to query SF open food trucks",
     "main": "index.js",
     "scripts": {
         "build": "rimraf bin && tsc && sh build/build.sh",
@@ -18,7 +18,6 @@
         "cli-table": "^0.3.1",
         "commander": "^3.0.1",
         "inquirer": "^7.0.0",
-        "pkg": "^4.4.0",
         "request": "^2.88.0",
         "request-promise": "^4.2.4",
         "rimraf": "^3.0.0",
