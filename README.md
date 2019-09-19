@@ -13,7 +13,8 @@ Command line program that prints out an alphabetically ordered list of all food 
 
 
 ## Usage
-Below usage doc requires all 3 installation steps to be completed\n
+Below usage doc requires all 3 installation steps to be completed
+
 `show-open-food-trucks -h` to see script usage
 ```
 Usage: show-open-food-trucks [options]
