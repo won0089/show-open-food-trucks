@@ -14,9 +14,9 @@ Command line program that prints out an alphabetically ordered list of all food 
 ## Usage
 - `show-open-food-trucks -h` to see script usage
 ```
-  Usage: show-open-food-trucks [options]
+Usage: show-open-food-trucks [options]
 Shows open food trucks right now in alphabetical order.
-        Will be prompted to show more results if there are more than specified limit (default: 10)
+Will be prompted to show more results if there are more than specified limit (default: 10)
 
 Options:
   -V, --version        output the version number
