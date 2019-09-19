@@ -9,19 +9,6 @@ export interface Options {
     sort?: 'asc' | 'desc'
 }
 
-function queryBuilder(queryOptions: Options): string {
-    const {
-        limit,
-        offset,
-        sort
-    } = queryOptions;
-    const { dayOfWeek, hour } = getCurrentDateTime();
-    const selectQuery = 'applicant,location';
-    const whereQuery = `'${hour}:00' BETWEEN start24 AND end24 AND dayorder=${dayOfWeek}`;
-
-    return `$select=${selectQuery}&$limit=${limit}&$offset=${offset}&$where=${whereQuery}&$order=applicant ${sort}`;
-}
-
 export class FoodTruckApi {
     private baseUrl: string;
     private limit: number;
@@ -43,6 +30,19 @@ export class FoodTruckApi {
         this.offset = 0;
     }
 
+    private queryBuilder(queryOptions: Options): string {
+        const {
+            limit,
+            offset,
+            sort
+        } = queryOptions;
+        const { dayOfWeek, hour } = getCurrentDateTime();
+        const selectQuery = 'applicant,location';
+        const whereQuery = `'${hour}:00' BETWEEN start24 AND end24 AND dayorder=${dayOfWeek}`;
+
+        return `$select=${selectQuery}&$limit=${limit}&$offset=${offset}&$where=${whereQuery}&$order=applicant ${sort}`;
+    }
+
     async getFoodTrucks(options?: Options): Promise<FoodTruck[]> {
         const {
             limit = this.limit,
@@ -52,7 +52,7 @@ export class FoodTruckApi {
 
         try {
             const response: FoodTruck[] =
-                await Request.get(`${this.baseUrl}?${queryBuilder({ limit, offset, sort })}`, { json: true });
+                await Request.get(`${this.baseUrl}?${this.queryBuilder({ limit, offset, sort })}`, { json: true });
 
             this.offset = offset + limit;
 

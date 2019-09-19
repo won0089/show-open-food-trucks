@@ -1,4 +1,4 @@
 export interface DateTime {
-  dayOfWeek: number;
-  hour: number;
+    dayOfWeek: number;
+    hour: number;
 }

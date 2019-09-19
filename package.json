@@ -3,6 +3,7 @@
     "version": "1.0.0",
     "description": "CLI tool to query SF open food trucks",
     "main": "index.js",
+    "bin": "./bin/show-open-food-trucks",
     "scripts": {
         "build": "rimraf bin && tsc && sh build/build.sh",
         "start": "tsc && node bin/index.js"

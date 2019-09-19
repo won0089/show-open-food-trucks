@@ -1,4 +1,4 @@
 export interface FoodTruck {
-  applicant: string;
-  location: string;
+    applicant: string;
+    location: string;
 }
