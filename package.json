@@ -8,6 +8,9 @@
         "start": "tsc && node bin/index.js"
     },
     "author": "",
+    "engines": {
+        "node": "^10.3.0"
+    },
     "license": "ISC",
     "dependencies": {
         "@types/cli-table": "^0.3.0",
