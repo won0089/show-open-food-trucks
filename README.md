@@ -12,7 +12,7 @@ Command line program that prints out an alphabetically ordered list of all food 
 
 
 ## Usage
-- `show-open-food-trucks -h` to see script usage
+`show-open-food-trucks -h` to see script usage
 ```
 Usage: show-open-food-trucks [options]
 Shows open food trucks right now in alphabetical order.
@@ -23,4 +23,4 @@ Options:
   -l, --limit [limit]  [limit] number of results per page (default: 10)
   -h, --help           output usage information
 ```
-- `show-open-food-trucks` lists first 10 open food trucks and askes for user input for next 10. Answer Y/N to continue or to terminate
+`show-open-food-trucks` lists first 10 open food trucks and askes for user input for next 10. Answer Y/N to continue or to terminate
