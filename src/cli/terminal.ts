@@ -42,7 +42,7 @@ export class Prompter {
      * 
      * Prompts user interaction. 
      * 
-     * @returns Promise<{ showNext: boolean; }>
+     * @returns Boolean value of user interaction. Y -> true | N -> false
      * 
      */
     async prompt() {
