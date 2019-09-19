@@ -7,11 +7,13 @@ Command line program that prints out an alphabetically ordered list of all food 
   - Minumum required version: v10.3.0. Latest LTS version recommended
   - Latest LTS ships with npm ^v6.0.0
 - Unpack source code and navigate to root directory (default: show-open-food-trucks)
-  - `npm i` to install dependencies
-  - `npm run build` to build 
+  1. `npm i` to install dependencies
+  2. `npm run build` to build 
+  3. `npm i -g` to create a script symlink
 
 
 ## Usage
+Below usage doc requires all 3 installation steps to be completed
 `show-open-food-trucks -h` to see script usage
 ```
 Usage: show-open-food-trucks [options]
