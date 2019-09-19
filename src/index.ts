@@ -2,8 +2,16 @@ import { initializeArgs } from './cli/arguments';
 import { Printer, Prompter } from './cli/terminal';
 import { FoodTruckApi } from './api/foodTruckApi';
 import { FoodTruck } from './model/foodTruck';
-import { LIMIT } from './constants';
+import { LIMIT } from './config/constants';
 
+/**
+ * Converts FoodTruck object to string tupple
+ * 
+ * @param foodTruck - FoodTruck object
+ * 
+ * @returns string tupple where format is [applicant, location]
+ * 
+ */
 function toTupple(foodTruck: FoodTruck): [string, string] {
     const { applicant, location } = foodTruck;
 
@@ -19,7 +27,7 @@ function toTupple(foodTruck: FoodTruck): [string, string] {
     const token = process.env.SOCRATA_APP_TOKEN;
 
     const prompter = new Prompter({ limit });
-    const printer = new Printer();
+    const printer = new Printer({ head: ['NAME', 'LOCATION'] });
     const api = new FoodTruckApi({ limit, token });
 
     try {

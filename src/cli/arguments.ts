@@ -1,8 +1,14 @@
-import * as Commander from 'commander';
-import { LIMIT } from '../constants';
+import { Command } from 'commander';
+import { LIMIT } from '../config/constants';
 
-export function initializeArgs() {
-    const program = new Commander.Command();
+/**
+ * Initializes cli arguments to be parsed utilizing commanderjs library.
+ * 
+ * @returns arguments: commanderjs Command object that parses cli arguments
+ * 
+ */
+export function initializeArgs(): Command {
+    const program = new Command();
 
     program
         .name('show-open-food-trucks')

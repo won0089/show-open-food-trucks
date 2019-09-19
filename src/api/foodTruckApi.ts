@@ -1,7 +1,7 @@
 import * as Request from 'request-promise';
 import { FoodTruck } from '../model/foodTruck';
 import { getCurrentDateTime } from '../util/dateUtils';
-import { LIMIT, FOOD_TRUCK_API_URL } from '../constants';
+import { LIMIT, FOOD_TRUCK_API_URL } from '../config/constants';
 
 export interface Options {
     limit?: number;
@@ -16,6 +16,13 @@ export class FoodTruckApi {
     private sort: 'asc' | 'desc';
     private offset: number;
 
+    /**
+     * 
+     * Initializes new FoodTruckApi
+     * 
+     * @param options - constructor options for FoodTruckApi
+     * 
+     */
     constructor(options?: {
         token?: string;
         baseUrl?: string;
@@ -23,8 +30,8 @@ export class FoodTruckApi {
     }) {
         const {
             token = '',
-            limit = LIMIT,
             baseUrl = FOOD_TRUCK_API_URL,
+            limit = LIMIT,
         } = options || {};
 
         this.token = token;
@@ -34,6 +41,16 @@ export class FoodTruckApi {
         this.offset = 0;
     }
 
+    /**
+     * 
+     * Builds search parameter for Socrata API call
+     * 
+     * @param queryOptions - parameters for search parameter of Options. 
+     * All parameters are required.
+     * 
+     * @returns search parameter string to append to Socrata API call
+     * 
+     */
     private queryBuilder(queryOptions: Options): string {
         const {
             limit,
@@ -49,6 +66,15 @@ export class FoodTruckApi {
         return `$select=${selectQuery}&$limit=${limit}&$offset=${offset}&$where=${whereQuery}&$order=${orderQuery}${token}`;
     }
 
+    /**
+     * 
+     * Returns list of currently open food trucks
+     * 
+     * @param options - overridable parameters of type Options.
+     * 
+     * @returns list of food trucks
+     * 
+     */
     async getFoodTrucks(options?: Options): Promise<FoodTruck[]> {
         const {
             limit = this.limit,
@@ -57,9 +83,11 @@ export class FoodTruckApi {
         } = options || {};
 
         try {
-            const response: FoodTruck[] =
-                await Request.get(`${this.baseUrl}?${this.queryBuilder({ limit, offset, sort })}`, { json: true });
+            const response: FoodTruck[] = await Request.get(
+                `${this.baseUrl}?${this.queryBuilder({ limit, offset, sort })}`,
+                { json: true });
 
+            // remember current limit as offet for next call
             this.offset = offset + limit;
 
             return response;
