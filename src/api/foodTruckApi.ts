@@ -10,20 +10,24 @@ export interface Options {
 }
 
 export class FoodTruckApi {
+    private token: string;
     private baseUrl: string;
     private limit: number;
     private sort: 'asc' | 'desc';
     private offset: number;
 
     constructor(options?: {
+        token?: string;
         baseUrl?: string;
         limit?: number;
     }) {
         const {
+            token = '',
             limit = LIMIT,
             baseUrl = FOOD_TRUCK_API_URL,
         } = options || {};
 
+        this.token = token;
         this.baseUrl = baseUrl;
         this.limit = limit;
         this.sort = 'asc';
@@ -39,8 +43,10 @@ export class FoodTruckApi {
         const { dayOfWeek, hour } = getCurrentDateTime();
         const selectQuery = 'applicant,location';
         const whereQuery = `'${hour}:00' BETWEEN start24 AND end24 AND dayorder=${dayOfWeek}`;
+        const orderQuery = `applicant ${sort}`;
+        const token = this.token ? `&$$app_token=${this.token}` : '';
 
-        return `$select=${selectQuery}&$limit=${limit}&$offset=${offset}&$where=${whereQuery}&$order=applicant ${sort}`;
+        return `$select=${selectQuery}&$limit=${limit}&$offset=${offset}&$where=${whereQuery}&$order=${orderQuery}${token}`;
     }
 
     async getFoodTrucks(options?: Options): Promise<FoodTruck[]> {

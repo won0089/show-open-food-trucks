@@ -16,9 +16,11 @@ function toTupple(foodTruck: FoodTruck): [string, string] {
     args.parse(process.argv);
 
     const limit = Number(args.limit) || LIMIT;
+    const token = process.env.SOCRATA_APP_TOKEN;
+
     const prompter = new Prompter({ limit });
     const printer = new Printer();
-    const api = new FoodTruckApi({ limit });
+    const api = new FoodTruckApi({ limit, token });
 
     try {
         let endOfListMessage = 'No open food trucks at this moment. Please try again at a later time!';
