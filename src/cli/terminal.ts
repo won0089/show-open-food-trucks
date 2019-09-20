@@ -15,7 +15,6 @@ export interface PrompterOptions {
 export class Prompter {
     /**
      * Prompt module that returns Promise of user interaction upon execution.
-     * Utilizes inquirer.js
      */
     private promptModule: () => Promise<{ showNext: boolean; }>;
 

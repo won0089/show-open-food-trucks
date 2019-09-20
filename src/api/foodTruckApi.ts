@@ -10,10 +10,25 @@ export interface Options {
 }
 
 export class FoodTruckApi {
+    /**
+     * app token for accessing Socrata API. Can be accessed in limited capacity without token
+     */
     private token: string;
+    /**
+     * url for Socrata API
+     */
     private baseUrl: string;
+    /**
+     * number of list per request returned from Socrata API
+     */
     private limit: number;
+    /**
+     * sorting direction
+     */
     private sort: 'asc' | 'desc';
+    /**
+     * offset for the request
+     */
     private offset: number;
 
     /**

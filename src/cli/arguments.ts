@@ -4,7 +4,7 @@ import { LIMIT } from '../config/constants';
 /**
  * Initializes cli arguments to be parsed utilizing commanderjs library.
  * 
- * @returns arguments: commanderjs Command object that parses cli arguments
+ * @returns arguments - commanderjs Command object that parses cli arguments
  * 
  */
 export function initializeArgs(): Command {
